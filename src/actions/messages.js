@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { db, auth } from '../firebase/firebase';
 import { ref, push, onValue } from 'firebase/database';
 
@@ -45,21 +44,7 @@ export const startSetMessages = () => {
                 });
             });
 
-            console.log(chatroom);
             dispatch(setMessage(chatroom));
         });
     };
 };
-
-// const uid = auth.currentUser.uid;
-// onValue(ref(db, `users/${uid}/chatroom`), (snapshot) => {
-//     const chatroom = [];
-//     snapshot.forEach((childSnapshot) => {
-//         chatroom.push({
-//             id: childSnapshot.key,
-//             ...childSnapshot.val(),
-//         });
-//     });
-
-//     console.log(chatroom);
-// });

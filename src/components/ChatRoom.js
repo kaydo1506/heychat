@@ -30,7 +30,6 @@ const Chatroom = ({ dispatch, chatroom }) => {
             }
         });
     }, [dispatch]);
-    console.log(chatroom);
 
     return (
         <>
