@@ -8,13 +8,13 @@ import { auth } from '../firebase/firebase';
 const App = () => {
     const [user, loading, error] = useAuthState(auth);
     return (
-        <div className='box-layout'>
+        <div>
             <header className='header'>
                 <h1>💬</h1>
                 <SignOut />
             </header>
 
-            <section>
+            <section className='box-layout'>
                 {loading && <p className='sign-in--text'>Initializing User...</p>}
                 {error && <p>error: {error}</p>}
                 {user ? <ChatRoom /> : <SignIn />}

@@ -1,17 +1,18 @@
 .box-layout {
-    // background: url('/imgs/background.png');
-    // background-size: cover;
-    // height: 100vh;
-    background-color: cadetblue;
+    background-color: darkcyan;
     height: 100vh;
-    max-width: 750px;
+    max-width: 700px;
     margin: auto;
+    padding-top: 10px;
 }
 .header {
     background-color: rgb(35, 56, 56);
-    padding: 12px;
+    padding: 12px 0;
+    max-width: 700px;
+    margin: auto;
     & h1 {
     margin: 0;
+    padding-left: 15px;
     }
 }
 body {

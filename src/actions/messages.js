@@ -3,23 +3,23 @@ import { ref, push, onValue } from 'firebase/database';
 
 import { onAuthStateChanged } from 'firebase/auth';
 
-export const addMessage = (chatMessages) => ({
+export const addMessage = (chatMessage) => ({
     type: 'ADD_MESSAGE',
-    chatMessages,
+    chatMessage,
 });
 
 export const startAddMessage = (messageData = {}) => {
     return (dispatch) => {
         const { messages = '', photoURL = '' } = messageData;
-        const chatMessages = { messages, photoURL };
+        const chatMessage = { messages, photoURL };
 
         onAuthStateChanged(auth, (user) => {
-            const newChatKey = push(ref(db, `users/chatroom`), chatMessages).key;
+            const newChatKey = push(ref(db, `users/chatroom`), chatMessage).key;
             if (user) {
                 dispatch(
                     addMessage({
                         id: newChatKey,
-                        ...chatMessages,
+                        ...chatMessage,
                     })
                 );
             }

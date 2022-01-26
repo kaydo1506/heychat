@@ -30,16 +30,14 @@ const Chatroom = ({ dispatch, chatroom }) => {
             }
         });
     }, [dispatch]);
-    console.log(chatroom);
 
     return (
         <>
-            <div className='chatroom'>
-                {chatroom &&
-                    chatroom.map((list) => {
-                        return <ChatMessage key={list.id} {...list} />;
-                    })}
-            </div>
+            <main>
+                {chatroom.map((list) => {
+                    return <ChatMessage key={list.id} {...list} />;
+                })}
+            </main>
             <form className='form' onSubmit={onSubmit}>
                 <input value={formValue} className='form--input' placeholder='say something nice' onChange={input} />
                 <button disabled={!formValue} className='form--btn'>
