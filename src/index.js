@@ -6,6 +6,7 @@ import './firebase/firebase';
 import './index.scss';
 import 'font-awesome/css/font-awesome.min.css';
 import { configureStore } from './store/configureStore';
+import { startSetMessages } from './actions/messages';
 
 const store = configureStore();
 ReactDOM.render(
@@ -14,3 +15,4 @@ ReactDOM.render(
     </Provider>,
     document.getElementById('root')
 );
+store.dispatch(startSetMessages());

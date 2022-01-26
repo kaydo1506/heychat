@@ -10,8 +10,8 @@ export const addMessage = (chatMessage) => ({
 
 export const startAddMessage = (messageData = {}) => {
     return (dispatch) => {
-        const { messages = '', photoURL = '' } = messageData;
-        const chatMessage = { messages, photoURL };
+        const { messages = '', photoURL = '', uid = '' } = messageData;
+        const chatMessage = { messages, photoURL, uid };
 
         onAuthStateChanged(auth, (user) => {
             const newChatKey = push(ref(db, `users/chatroom`), chatMessage).key;
@@ -33,7 +33,7 @@ export const setMessage = (chatMessages) => ({
 });
 export const startSetMessages = () => {
     return (dispatch) => {
-        onValue(ref(db, `users/chatroom`), (snapshot) => {
+        return onValue(ref(db, `users/chatroom`), (snapshot) => {
             const chatroom = [];
             snapshot.forEach((childSnapshot) => {
                 chatroom.push({
@@ -43,6 +43,7 @@ export const startSetMessages = () => {
             });
 
             dispatch(setMessage(chatroom));
+            console.log(chatroom);
         });
     };
 };

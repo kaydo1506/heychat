@@ -1,42 +1,35 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { auth } from '../firebase/firebase';
 import { connect } from 'react-redux';
 import ChatMessage from './ChatMessage';
-import { startAddMessage, startSetMessages } from '../actions/messages';
-import { onAuthStateChanged } from 'firebase/auth';
+import { startAddMessage } from '../actions/messages';
 
 const Chatroom = ({ dispatch, chatroom }) => {
     // const [error] = useState(undefined);
-    const { photoURL } = auth.currentUser;
-    const [chat, setChat] = useState({ messages: '', photoURL: '' });
+    const { uid, photoURL } = auth.currentUser;
+    const [chat, setChat] = useState({ messages: '', photoURL: '', uid: '' });
     const [formValue, setFormValue] = useState('');
 
     const input = (e) => {
         e.preventDefault();
-        let text = e.target.value;
-        setFormValue(text);
-        setChat({ messages: text, photoURL });
+
+        setFormValue(e.target.value);
+        setChat({ messages: e.target.value, photoURL, uid });
     };
     const onSubmit = (e) => {
         e.preventDefault();
         dispatch(startAddMessage(chat));
         setFormValue('');
     };
-
-    useEffect(() => {
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                dispatch(startSetMessages());
-            }
-        });
-    }, [dispatch]);
+    console.log(chatroom);
 
     return (
         <>
             <main>
-                {chatroom.map((list) => {
-                    return <ChatMessage key={list.id} {...list} />;
-                })}
+                {chatroom &&
+                    chatroom.map((list) => {
+                        return <ChatMessage key={list.id} {...list} />;
+                    })}
             </main>
             <form className='form' onSubmit={onSubmit}>
                 <input value={formValue} className='form--input' placeholder='say something nice' onChange={input} />
