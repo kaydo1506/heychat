@@ -20,15 +20,12 @@ const Chatroom = ({ dispatch, chatroom }) => {
         e.preventDefault();
         dispatch(startAddMessage(chat));
         setFormValue('');
+        dummy.current.scrollIntoView({ behavior: 'smooth' });
     };
 
     useEffect(() => {
         dispatch(startSetMessages());
     }, [dispatch, chatroom]);
-
-    useEffect(() => {
-        dummy.current.scrollIntoView({ behavior: 'smooth' });
-    }, []);
 
     return (
         <>
