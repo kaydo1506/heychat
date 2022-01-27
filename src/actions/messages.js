@@ -1,7 +1,7 @@
-import { db, auth } from '../firebase/firebase';
+import { db } from '../firebase/firebase';
 import { ref, push, onValue } from 'firebase/database';
 
-import { onAuthStateChanged } from 'firebase/auth';
+// import { onAuthStateChanged } from 'firebase/auth';
 
 export const addMessage = (chatMessage) => ({
     type: 'ADD_MESSAGE',
