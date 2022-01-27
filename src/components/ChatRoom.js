@@ -24,8 +24,11 @@ const Chatroom = ({ dispatch, chatroom }) => {
 
     useEffect(() => {
         dispatch(startSetMessages());
-        dummy.current.scrollIntoView({ behavior: 'smooth' });
     }, [dispatch, chatroom]);
+
+    useEffect(() => {
+        dummy.current.scrollIntoView({ behavior: 'smooth' });
+    }, [formValue]);
 
     return (
         <>
