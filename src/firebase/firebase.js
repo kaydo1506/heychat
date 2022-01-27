@@ -4,14 +4,14 @@ import { getDatabase } from 'firebase/database';
 import { GoogleAuthProvider, getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-    apiKey: 'AIzaSyDGQvukIG0HpjYNMNsIeEc8xOIaUV7c87w',
-    authDomain: 'heychat-fdfa7.firebaseapp.com',
-    databaseURL: 'https://heychat-fdfa7-default-rtdb.firebaseio.com',
-    projectId: 'heychat-fdfa7',
-    storageBucket: 'heychat-fdfa7.appspot.com',
-    messagingSenderId: '648053696813',
-    appId: '1:648053696813:web:dbe7ed37c2539354738ba4',
-    measurementId: 'G-CDG0KJQWQQ',
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+    appId: process.env.REACT_APP_FIREBASE_APP_ID,
+    measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase

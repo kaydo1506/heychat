@@ -3,23 +3,24 @@ import { ref, push, onValue } from 'firebase/database';
 
 import { onAuthStateChanged } from 'firebase/auth';
 
-export const addMessage = (chatMessage) => ({
+export const addMessage = (chat) => ({
     type: 'ADD_MESSAGE',
-    chatMessage,
+    chat,
 });
 
 export const startAddMessage = (messageData = {}) => {
     return (dispatch) => {
         const { messages = '', photoURL = '', uid = '' } = messageData;
-        const chatMessage = { messages, photoURL, uid };
+        const chat = { messages, photoURL, uid };
 
         onAuthStateChanged(auth, (user) => {
-            const newChatKey = push(ref(db, `users/chatroom`), chatMessage).key;
+            const { uid } = auth.currentUser;
+            const newChatKey = push(ref(db, `users/${uid}/chatroom`), chat).key;
             if (user) {
                 dispatch(
                     addMessage({
                         id: newChatKey,
-                        ...chatMessage,
+                        ...chat,
                     })
                 );
             }
@@ -33,17 +34,28 @@ export const setMessage = (chatMessages) => ({
 });
 export const startSetMessages = () => {
     return (dispatch) => {
-        return onValue(ref(db, `users/chatroom`), (snapshot) => {
-            const chatroom = [];
-            snapshot.forEach((childSnapshot) => {
-                chatroom.push({
-                    id: childSnapshot.key,
-                    ...childSnapshot.val(),
-                });
-            });
+        onAuthStateChanged(auth, (user) => {
+            const { uid } = auth.currentUser;
+            onValue(
+                ref(db, `users/${uid}/chatroom`),
+                (snapshot) => {
+                    const chatroom = [];
+                    snapshot.forEach((childSnapshot) => {
+                        chatroom.push({
+                            id: childSnapshot.key,
+                            ...childSnapshot.val(),
+                        });
+                    });
 
-            dispatch(setMessage(chatroom));
-            console.log(chatroom);
+                    dispatch(setMessage(chatroom));
+                },
+                {
+                    onlyOnce: true,
+                }
+            );
         });
     };
 };
+
+// finish setting up the rules
+// set up environment variables
