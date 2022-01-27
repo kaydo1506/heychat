@@ -42,8 +42,7 @@ export const startSetMessages = () => {
                 });
 
                 dispatch(setMessage(chatroom));
-                console.log(chatroom);
-            },
+        },
             {
                 onlyOnce: true,
             }
