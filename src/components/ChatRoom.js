@@ -21,6 +21,7 @@ const Chatroom = ({ dispatch, chatroom }) => {
         dispatch(startAddMessage(chat));
         setFormValue('');
     };
+    console.log(chatroom);
 
     return (
         <>
@@ -31,12 +32,10 @@ const Chatroom = ({ dispatch, chatroom }) => {
                     })}
             </main>
             <form className='form' onSubmit={onSubmit}>
-
                 <input value={formValue} className='form--input' placeholder='say something nice' onChange={input} />
                 <button disabled={!formValue} className='form--btn'>
                     send
                 </button>
-                
             </form>
         </>
     );

@@ -1,7 +1,7 @@
 const reducerFunction = (state = [], action) => {
     switch (action.type) {
         case 'ADD_MESSAGE':
-            return [...state, action.chat];
+            return [...state, action.chatMessage];
         case 'SET_MESSAGES':
             return action.chatMessages;
         default:

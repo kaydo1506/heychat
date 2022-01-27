@@ -3,28 +3,24 @@ import { ref, push, onValue } from 'firebase/database';
 
 import { onAuthStateChanged } from 'firebase/auth';
 
-export const addMessage = (chat) => ({
+export const addMessage = (chatMessage) => ({
     type: 'ADD_MESSAGE',
-    chat,
+    chatMessage,
 });
 
 export const startAddMessage = (messageData = {}) => {
     return (dispatch) => {
         const { messages = '', photoURL = '', uid = '' } = messageData;
-        const chat = { messages, photoURL, uid };
+        const chatMessage = { messages, photoURL, uid };
 
-        onAuthStateChanged(auth, (user) => {
-            const { uid } = auth.currentUser;
-            const newChatKey = push(ref(db, `users/${uid}/chatroom`), chat).key;
-            if (user) {
-                dispatch(
-                    addMessage({
-                        id: newChatKey,
-                        ...chat,
-                    })
-                );
-            }
-        });
+        const newChatKey = push(ref(db, `users/chatroom`), chatMessage).key;
+
+        dispatch(
+            addMessage({
+                id: newChatKey,
+                ...chatMessage,
+            })
+        );
     };
 };
 
@@ -34,28 +30,23 @@ export const setMessage = (chatMessages) => ({
 });
 export const startSetMessages = () => {
     return (dispatch) => {
-        onAuthStateChanged(auth, (user) => {
-            const { uid } = auth.currentUser;
-            onValue(
-                ref(db, `users/${uid}/chatroom`),
-                (snapshot) => {
-                    const chatroom = [];
-                    snapshot.forEach((childSnapshot) => {
-                        chatroom.push({
-                            id: childSnapshot.key,
-                            ...childSnapshot.val(),
-                        });
+        onValue(
+            ref(db, `users/chatroom`),
+            (snapshot) => {
+                const chatroom = [];
+                snapshot.forEach((childSnapshot) => {
+                    chatroom.push({
+                        id: childSnapshot.key,
+                        ...childSnapshot.val(),
                     });
+                });
 
-                    dispatch(setMessage(chatroom));
-                },
-                {
-                    onlyOnce: true,
-                }
-            );
-        });
+                dispatch(setMessage(chatroom));
+                console.log(chatroom);
+            },
+            {
+                onlyOnce: true,
+            }
+        );
     };
 };
-
-// finish setting up the rules
-// set up environment variables
