@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { auth } from '../firebase/firebase';
 import { connect } from 'react-redux';
 import ChatMessage from './ChatMessage';
-import { startAddMessage } from '../actions/messages';
+import { startAddMessage, startSetMessages } from '../actions/messages';
 
 const Chatroom = ({ dispatch, chatroom }) => {
-    // const [error] = useState(undefined);
+    const dummy = useRef();
     const { uid, photoURL } = auth.currentUser;
     const [chat, setChat] = useState({ messages: '', photoURL: '', uid: '' });
     const [formValue, setFormValue] = useState('');
@@ -21,7 +21,11 @@ const Chatroom = ({ dispatch, chatroom }) => {
         dispatch(startAddMessage(chat));
         setFormValue('');
     };
-    console.log(chatroom);
+
+    useEffect(() => {
+        dispatch(startSetMessages());
+        dummy.current.scrollIntoView({ behavior: 'smooth' });
+    }, [dispatch, chatroom]);
 
     return (
         <>
@@ -30,6 +34,7 @@ const Chatroom = ({ dispatch, chatroom }) => {
                     chatroom.map((list) => {
                         return <ChatMessage key={list.id} {...list} />;
                     })}
+                <span ref={dummy}></span>
             </main>
             <form className='form' onSubmit={onSubmit}>
                 <input value={formValue} className='form--input' placeholder='say something nice' onChange={input} />
@@ -45,8 +50,3 @@ const mapStateToProps = (state) => {
     return { chatroom: state };
 };
 export default connect(mapStateToProps)(Chatroom);
-
-/* Tommorrow Ify pls Render the chatmessages on the screen, that should be the final thing */
-/* Goodluck */
-// God be with you
-// I'm proud of you keep going

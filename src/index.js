@@ -2,17 +2,33 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './components/App';
+// import { onAuthStateChanged } from 'firebase/auth';
+// import { auth } from './firebase/firebase';
 import './firebase/firebase';
 import './index.scss';
 import 'font-awesome/css/font-awesome.min.css';
 import { configureStore } from './store/configureStore';
-import { startSetMessages } from './actions/messages';
+// import { startSetMessages } from './actions/messages';
 
 const store = configureStore();
+
+// store.dispatch(startSetMessages());
 ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
     document.getElementById('root')
 );
-store.dispatch(startSetMessages());
+// let hasRendered = false;
+// const renderApp = () => {
+//     if (!hasRendered) {
+//         ReactDOM.render(
+//             <Provider store={store}>
+//                 <App />
+//             </Provider>,
+//             document.getElementById('root')
+//         );
+//         hasRendered = true;
+//     }
+// };
+

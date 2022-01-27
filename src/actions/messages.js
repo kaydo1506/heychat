@@ -1,7 +1,7 @@
 import { db } from '../firebase/firebase';
 import { ref, push, onValue } from 'firebase/database';
-
 // import { onAuthStateChanged } from 'firebase/auth';
+// import { auth } from '../firebase/firebase';
 
 export const addMessage = (chatMessage) => ({
     type: 'ADD_MESSAGE',
@@ -42,7 +42,7 @@ export const startSetMessages = () => {
                 });
 
                 dispatch(setMessage(chatroom));
-        },
+            },
             {
                 onlyOnce: true,
             }
