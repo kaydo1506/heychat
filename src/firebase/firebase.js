@@ -21,30 +21,3 @@ export const db = getDatabase(app);
 export const provider = new GoogleAuthProvider();
 export const auth = getAuth();
 auth.languageCode = 'it';
-
-// onAuthStateChanged(auth, (user) => {
-//     if (user) {
-//         const uid = user.uid;
-//         onValue(ref(db, `user/${uid}/chatroom`), (snapshot) => {
-//             const chatroom = [];
-//             snapshot.forEach((childSnapshot) => {
-//                 chatroom.push({
-//                     id: childSnapshot.key,
-//                     ...childSnapshot.val(),
-//                 });
-//             });
-//             console.log(chatroom);
-//         });
-//     }
-// });
-// const uid = auth.currentUser.uid;
-// onValue(ref(db, `user/${uid}/chatroom`), (snapshot) => {
-//     const chatroom = [];
-//     snapshot.forEach((childSnapshot) => {
-//         chatroom.push({
-//             id: childSnapshot.key,
-//             ...childSnapshot.val(),
-//         });
-//     });
-//     console.log(chatroom);
-// });
