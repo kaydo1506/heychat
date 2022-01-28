@@ -1,20 +1,26 @@
+body {
+    background-color: $background;
+    margin: 0;
+}
+
 .box-layout {
-    background-color: darkslategray;
+    background-color: $primary;
     height: 100vh;
-    max-width: 700px;
-    margin: auto;
     padding-top: 10px;
 }
-.header {
-    background-color: rgb(35, 56, 56);
-    padding: 12px 0;
-    max-width: 700px;
+
+.box-layout, .header {
+    max-width: $max-width;
     margin: auto;
+}
+
+.header {
+    background-color: $primary-dark;
+    padding: 12px 0;
+    display: flex;
+    justify-content: space-between;
     & h1 {
     margin: 0;
     padding-left: 15px;
     }
-}
-body {
-background-color: rgb(32, 36, 36);
 }
