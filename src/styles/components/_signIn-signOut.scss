@@ -55,6 +55,7 @@
 
     &--text{
         text-align: center;
+        padding: 0 20px;
     }
 
     &--icon{
@@ -82,9 +83,6 @@
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
 
-    &:hover{
-        background-color: $primary;
-    }
     &--icon {
         font-size: 20px;
     }

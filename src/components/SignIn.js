@@ -15,7 +15,8 @@ const SignIn = () => {
             <button className='sign-in--btn' onClick={signInWithGoogle}>
                 <span>Sign in with Google</span>
             </button>
-            <p className='sign-in--text'>Do not violate the community guidelines or you will be banned for life!</p>
+            <p className='sign-in--text'>Don't spam! </p>
+            <p className='sign-in--text'>Don't share sensitive information! </p>
         </div>
     );
 };

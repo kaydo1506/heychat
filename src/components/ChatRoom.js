@@ -26,11 +26,11 @@ const Chatroom = ({ dispatch, chatroom }) => {
         dispatch(startSetMessages());
     }, [dispatch, chatroom]);
 
-    
     useEffect(() => {
-        dummy.current.scrollIntoView({ behavior: 'smooth' });
-        
-    }, []);
+        setTimeout(() => {
+            dummy.current.scrollIntoView({ behavior: 'smooth' });
+        }, 2500);
+    }, [formValue]);
 
     return (
         <>
