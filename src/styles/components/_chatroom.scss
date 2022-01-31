@@ -64,6 +64,7 @@ main {
         -ms-border-radius: 25px;
         -o-border-radius: 25px;
         text-align: justify;
+        color: $white;
 }
 p {
     max-width: 500px;
@@ -77,12 +78,12 @@ p {
   }
   
   .sent p {
-    color: whitesmoke;
+    color: $off-white;
     background-color: rgba(212, 110, 14, 0.884);
     align-self: flex-end;
     margin-right: 10px;
   }
   .received p {
-    background: $off-white;
+    background: $background;
     color: $black;
   }
