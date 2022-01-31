@@ -1,9 +1,14 @@
 body {
-    background-color: $background;
+    background-color: $off-white;
     margin: 0;
 }
 
 .box-layout {
+    background-image: linear-gradient(
+        rgba(32, 26, 22, 0.45), 
+        rgba(39, 34, 29, 0.45)
+      ),
+    url(/imgs/bg.jpeg);
     background-color: $primary;
     height: 100vh;
     padding-top: 10px;

@@ -2,9 +2,9 @@
     height: 8vh;
     position: fixed;
     bottom: 0;
-    background-color: $background;
+    border: 4px solid $background;
     width: 100%;
-    max-width: $max-width;
+    max-width: 692px;
     display: flex;
     font-size: $fs-small;
     margin-bottom: 10px;
@@ -64,13 +64,14 @@ main {
         -ms-border-radius: 25px;
         -o-border-radius: 25px;
         text-align: justify;
-        color: $white;
+    
 }
 p {
     max-width: 500px;
     margin-bottom: 10px;
     line-height: 24px;
     position: relative;
+
   }
 }
 .sent {
@@ -84,6 +85,6 @@ p {
     margin-right: 10px;
   }
   .received p {
-    background: $background;
+    background: $off-white;
     color: $black;
   }
