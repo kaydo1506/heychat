@@ -7,7 +7,7 @@
     max-width: 692px;
     display: flex;
     font-size: $fs-small;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     
     &--input{
       line-height: 1.5;
@@ -80,7 +80,7 @@ p {
   
   .sent p {
     color: $off-white;
-    background-color: rgba(212, 110, 14, 0.884);
+    background-color: $secondary;
     align-self: flex-end;
     margin-right: 10px;
   }
