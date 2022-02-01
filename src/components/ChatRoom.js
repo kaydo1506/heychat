@@ -6,15 +6,15 @@ import { startAddMessage, startSetMessages } from '../actions/messages';
 
 const Chatroom = ({ dispatch, chatroom }) => {
     const dummy = useRef();
-    const { uid, photoURL } = auth.currentUser;
-    const [chat, setChat] = useState({ messages: '', photoURL: '', uid: '' });
+    const { uid, photoURL, displayName } = auth.currentUser;
+    const [chat, setChat] = useState({ messages: '', photoURL: '', uid: '', displayName: '' });
     const [formValue, setFormValue] = useState('');
 
     const input = (e) => {
         e.preventDefault();
 
         setFormValue(e.target.value);
-        setChat({ messages: e.target.value, photoURL, uid });
+        setChat({ messages: e.target.value, photoURL, uid, displayName });
     };
     const onSubmit = (e) => {
         e.preventDefault();

@@ -10,8 +10,8 @@ export const addMessage = (chatMessage) => ({
 
 export const startAddMessage = (messageData = {}) => {
     return (dispatch) => {
-        const { messages = '', photoURL = '', uid = '' } = messageData;
-        const chatMessage = { messages, photoURL, uid };
+        const { messages = '', photoURL = '', uid = '', displayName = '' } = messageData;
+        const chatMessage = { messages, photoURL, uid, displayName };
 
         const newChatKey = push(ref(db, `users/chatroom`), chatMessage).key;
 

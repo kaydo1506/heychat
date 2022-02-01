@@ -41,7 +41,7 @@ main {
 }
 
 .chatMessage{
-    display: flex;
+  display: flex;
    
 
     .chatMessage-img{
@@ -55,7 +55,7 @@ main {
         -ms-border-radius: 50%;
         -o-border-radius: 50%;
     }
-    .chatMessage-text {
+      .chatMessage-text {
         padding: 10px;
         font-size: 13px;
         border-radius: 25px;
@@ -65,26 +65,38 @@ main {
         -o-border-radius: 25px;
         text-align: justify;
     
-}
-p {
-    max-width: 500px;
-    margin-bottom: 10px;
-    line-height: 24px;
-    position: relative;
+      }
+      p {
+        max-width: 500px;
+        margin-bottom: 10px;
+        line-height: 24px;
+        position: relative;
 
+      }
+}
+.displayName{
+  span{
+    display: flex;
+    color: grey;
+    font-size: 12px;
   }
 }
-.sent {
-    flex-direction: row-reverse;
-  }
-  
-  .sent p {
-    color: $off-white;
-    background-color: $secondary;
-    align-self: flex-end;
-    margin-right: 10px;
-  }
-  .received p {
-    background: $off-white;
-    color: $black;
-  }
+.sent, .sent span { 
+  flex-direction: row-reverse;
+}
+
+.sent span {
+  margin-right: 10px;
+}
+
+
+.sent p{
+  color: $off-white;
+  background-color: $secondary;
+  align-self: flex-end;
+  margin-right: 10px;
+}
+.received p{
+  background: $off-white;
+  color: $black;
+}
