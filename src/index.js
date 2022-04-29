@@ -12,23 +12,12 @@ import { configureStore } from './store/configureStore';
 
 const store = configureStore();
 
-// store.dispatch(startSetMessages());
+
 ReactDOM.render(
     <Provider store={store}>
         <App />
     </Provider>,
     document.getElementById('root')
 );
-// let hasRendered = false;
-// const renderApp = () => {
-//     if (!hasRendered) {
-//         ReactDOM.render(
-//             <Provider store={store}>
-//                 <App />
-//             </Provider>,
-//             document.getElementById('root')
-//         );
-//         hasRendered = true;
-//     }
-// };
+
 
